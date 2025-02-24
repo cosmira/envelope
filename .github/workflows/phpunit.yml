@@ -1,0 +1,52 @@
+name: Tests
+
+on:
+  push:
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [8.4, 8.3, 8.2]
+        dependency-version: [prefer-lowest, prefer-stable]
+
+    name: P${{ matrix.php }} - Ubuntu - ${{ matrix.dependency-version }}
+
+    steps:
+      - name: Checkout code 🛎️
+        uses: actions/checkout@v4
+
+      - name: Cache dependencies 🔧
+        uses: actions/cache@v4
+        with:
+          path: ~/.composer/cache/files
+          key: dependencies-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Setup PHP 🔧
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo, redis
+          coverage: none
+          tools: composer:v2
+
+      - name: Install qpdf 📄
+        run: |
+          sudo apt-get update && sudo apt-get install -y qpdf
+
+      - name: Install 7-zip 📦
+        run: |
+          sudo apt-get update && sudo apt-get install -y p7zip-full p7zip-rar
+
+      - name: Install msoffcrypto-tool 📦
+        run: |
+          pip install msoffcrypto-tool
+
+      - name: Install dependencies 🔧
+        run: |
+          composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
+
+      - name: Execute tests (Unit and Feature tests) via PHPUnit 🧪
+        run: vendor/bin/phpunit

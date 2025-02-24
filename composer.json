@@ -1,0 +1,46 @@
+{
+    "name": "cosmira/envelope",
+    "description": "An elegant PHP library for parsing and extracting structured email contents, including attachments and metadata.",
+    "type": "library",
+    "keywords": [
+        "email",
+        "mime",
+        "parser",
+        "attachments",
+        "mail",
+        "message extraction",
+        "eml"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexandr Chernyaev",
+            "email": "bliz48rus@gmail.com",
+            "homepage": "https://tabuna.github.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/collections": "^11.0",
+        "zbateson/mail-mime-parser": "^3.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.17",
+        "phpunit/phpunit": "^11.5",
+        "symfony/var-dumper": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cosmira\\Envelope\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cosmira\\Envelope\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
