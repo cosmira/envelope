@@ -6,6 +6,7 @@ use Illuminate\Support\Collection;
 use ZBateson\MailMimeParser\Header\AddressHeader;
 use ZBateson\MailMimeParser\Header\HeaderConsts;
 use ZBateson\MailMimeParser\Header\Part\AddressPart;
+use ZBateson\MailMimeParser\IMessage;
 use ZBateson\MailMimeParser\MailMimeParser;
 use ZBateson\MailMimeParser\Message;
 
@@ -13,10 +14,8 @@ class Envelope
 {
     /**
      * The parsed message instance.
-     *
-     * @var \ZBateson\MailMimeParser\Message
      */
-    protected Message $message;
+    protected IMessage $message;
 
     /**
      * Creates an instance of the parser and parses the given email content.
@@ -32,8 +31,7 @@ class Envelope
     /**
      * Static method to create an instance from a string of email content.
      *
-     * @param string $content                 The email content to parse.
-     * @param bool   $enableCharsetConversion Whether to enable charset conversion.
+     * @param string $content The email content to parse.
      *
      * @return self
      */

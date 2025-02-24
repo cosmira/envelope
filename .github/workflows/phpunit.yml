@@ -32,18 +32,6 @@ jobs:
           coverage: none
           tools: composer:v2
 
-      - name: Install qpdf 📄
-        run: |
-          sudo apt-get update && sudo apt-get install -y qpdf
-
-      - name: Install 7-zip 📦
-        run: |
-          sudo apt-get update && sudo apt-get install -y p7zip-full p7zip-rar
-
-      - name: Install msoffcrypto-tool 📦
-        run: |
-          pip install msoffcrypto-tool
-
       - name: Install dependencies 🔧
         run: |
           composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction
