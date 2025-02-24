@@ -1,8 +1,8 @@
-# Cosmira\Envelope
+# cosmira/envelope
 
-[![Tests](https://github.com/cosmira\envelope/actions/workflows/phpunit.yml/badge.svg)](https://github.com/cosmira\envelope/actions/workflows/phpunit.yml)
-[![Quality Assurance](https://github.com/cosmira\envelope/actions/workflows/quality.yml/badge.svg)](https://github.com/cosmira\envelope/actions/workflows/quality.yml)
-[![Coding Guidelines](https://github.com/cosmira\envelope/actions/workflows/code-style.yml/badge.svg)](https://github.com/cosmira\envelope/actions/workflows/php-cs-fixer.yml)
+[![Tests](https://github.com/cosmira/envelope/actions/workflows/phpunit.yml/badge.svg)](https://github.com/cosmira/envelope/actions/workflows/phpunit.yml)
+[![Quality Assurance](https://github.com/cosmira/envelope/actions/workflows/quality.yml/badge.svg)](https://github.com/cosmira/envelope/actions/workflows/quality.yml)
+[![Coding Guidelines](https://github.com/cosmira/envelope/actions/workflows/code-style.yml/badge.svg)](https://github.com/cosmira/envelope/actions/workflows/php-cs-fixer.yml)
 
 ## Introduction
 
@@ -23,7 +23,7 @@ composer require cosmira/envelope
 To use the `Envelope` class, instantiate it with raw email content. Then, use the various methods to access parts of the email such as the sender, recipients, subject, and more.
 
 ```php
-use Cosmira\Envelope\Envelope;
+use cosmira/envelope\Envelope;
 
 $emailContent = file_get_contents('path_to_email_file.eml');
 
