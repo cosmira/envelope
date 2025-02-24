@@ -9,7 +9,7 @@ use ZBateson\MailMimeParser\Message;
 
 class EnvelopeTest extends TestCase
 {
-    private string $emailContent = <<<EOL
+    private string $emailContent = <<<'EOL'
 From: John Doe <john@example.com>
 To: Jane Doe <jane@example.com>
 CC: Jack Doe <jack@example.com>
@@ -39,25 +39,25 @@ JVBERi0xLjQKJ...
 --boundary--
 EOL;
 
-    public function testCanCreateEnvelopeInstance(): void
+    public function test_can_create_envelope_instance(): void
     {
         $envelope = new Envelope($this->emailContent);
         $this->assertInstanceOf(Envelope::class, $envelope);
     }
 
-    public function testCanGetFromEmail(): void
+    public function test_can_get_from_email(): void
     {
         $envelope = new Envelope($this->emailContent);
         $this->assertEquals('john@example.com', $envelope->from());
     }
 
-    public function testCanGetFromName(): void
+    public function test_can_get_from_name(): void
     {
         $envelope = new Envelope($this->emailContent);
         $this->assertEquals('John Doe', $envelope->fromName());
     }
 
-    public function testCanGetToRecipients(): void
+    public function test_can_get_to_recipients(): void
     {
         $envelope = new Envelope($this->emailContent);
         $expected = collect(['jane@example.com' => 'Jane Doe']);
@@ -65,7 +65,7 @@ EOL;
         $this->assertEquals($expected, $envelope->to());
     }
 
-    public function testCanGetCcRecipients(): void
+    public function test_can_get_cc_recipients(): void
     {
         $envelope = new Envelope($this->emailContent);
         $expected = collect(['jack@example.com' => 'Jack Doe']);
@@ -73,7 +73,7 @@ EOL;
         $this->assertEquals($expected, $envelope->cc());
     }
 
-    public function testCanGetBccRecipients(): void
+    public function test_can_get_bcc_recipients(): void
     {
         $envelope = new Envelope($this->emailContent);
         $expected = collect(['jim@example.com' => 'Jim Doe']);
@@ -81,33 +81,33 @@ EOL;
         $this->assertEquals($expected, $envelope->bcc());
     }
 
-    public function testCanGetSubject(): void
+    public function test_can_get_subject(): void
     {
         $envelope = new Envelope($this->emailContent);
         $this->assertEquals('Test Email', $envelope->subject());
     }
 
-    public function testCanGetDate(): void
+    public function test_can_get_date(): void
     {
         $envelope = new Envelope($this->emailContent);
         $this->assertInstanceOf(\DateTime::class, $envelope->date());
         $this->assertEquals('2023-09-25 12:34:56', $envelope->date()->format('Y-m-d H:i:s'));
     }
 
-    public function testCanGetTextContent(): void
+    public function test_can_get_text_content(): void
     {
         $envelope = new Envelope($this->emailContent);
-        $this->assertEquals("This is the plain text part.", trim($envelope->text()));
+        $this->assertEquals('This is the plain text part.', trim($envelope->text()));
     }
 
-    public function testCanGetHtmlContent(): void
+    public function test_can_get_html_content(): void
     {
         $envelope = new Envelope($this->emailContent);
         $expectedHtml = '<html><body><p>This is the HTML part.</p></body></html>';
         $this->assertEquals($expectedHtml, trim($envelope->html()));
     }
 
-    public function testCanGetAttachments(): void
+    public function test_can_get_attachments(): void
     {
         $envelope = new Envelope($this->emailContent);
         $attachments = $envelope->attachments();
@@ -116,15 +116,15 @@ EOL;
         $this->assertCount(1, $attachments);
 
         $expected = [
-            "name" => "document.pdf",
-            "mime" => "application/pdf",
-            "content" => "%PDF-1.4\n",
+            'name'    => 'document.pdf',
+            'mime'    => 'application/pdf',
+            'content' => "%PDF-1.4\n",
         ];
 
         $this->assertEquals($expected, $attachments->first());
     }
 
-    public function testCanGetOriginalMessage(): void
+    public function test_can_get_original_message(): void
     {
         $envelope = new Envelope($this->emailContent);
         $this->assertInstanceOf(Message::class, $envelope->originalMessage());

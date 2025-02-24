@@ -176,7 +176,6 @@ class Envelope
         return collect($this->message->getHeader($header)->getAllParts())
             ->mapWithKeys(fn (AddressPart $address) => [$address->getEmail() => $address->getName()]);
 
-
         return collect($this->message->getHeader($header)?->getAllParts() ?? [])
             ->mapWithKeys(fn (AddressHeader|AddressPart $address) => [$address->getEmail() => is_a(AddressHeader::class, $address) ? $address->getPersonName() : null]);
     }
