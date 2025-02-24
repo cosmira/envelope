@@ -2,7 +2,7 @@
 
 [![Tests](https://github.com/cosmira/envelope/actions/workflows/phpunit.yml/badge.svg)](https://github.com/cosmira/envelope/actions/workflows/phpunit.yml)
 [![Quality Assurance](https://github.com/cosmira/envelope/actions/workflows/quality.yml/badge.svg)](https://github.com/cosmira/envelope/actions/workflows/quality.yml)
-[![Coding Guidelines](https://github.com/cosmira/envelope/actions/workflows/code-style.yml/badge.svg)](https://github.com/cosmira/envelope/actions/workflows/php-cs-fixer.yml)
+[![Coding Guidelines](https://github.com/cosmira/envelope/actions/workflows/code-style.yml/badge.svg)](https://github.com/cosmira/envelope/actions/workflows/code-style.yml)
 
 ## Introduction
 
