@@ -23,30 +23,30 @@ composer require cosmira/envelope
 To use the `Envelope` class, instantiate it with raw email content. Then, use the various methods to access parts of the email such as the sender, recipients, subject, and more.
 
 ```php
-use cosmira/envelope\Envelope;
+use Cosmira\Envelope\Envelope;
 
-$emailContent = file_get_contents('path_to_email_file.eml');
+$content = file_get_contents('path_to_email_file.eml');
 
 // Parse the email content
-$mailParser = Envelope::fromString($emailContent);
+$mail = Envelope::fromString($content);
 
 // Retrieve the sender's email address
-$from = $mailParser->from();
+$from = $mail->from();
 
 // Retrieve the recipient(s) in the "To" field
-$to = $mailParser->to();
+$to = $mail->to();
 
 // Retrieve the email subject
-$subject = $mailParser->subject();
+$subject = $mail->subject();
 
 // Retrieve the plain text content
-$textContent = $mailParser->text();
+$text = $mail->text();
 
 // Retrieve the HTML content
-$htmlContent = $mailParser->html();
+$html = $mail->html();
 
 // Retrieve the attachments
-$attachments = $mailParser->attachments();
+$attachments = $mail->attachments();
 ```
 
 ### Available Methods
@@ -68,20 +68,20 @@ Here are the methods you can use with the `Envelope` class:
 
 ```php
 // Get the "To" field recipients
-$toRecipients = $mailParser->to();
+$toRecipients = $mail->to();
 
 // Get the "CC" field recipients
-$ccRecipients = $mailParser->cc();
+$ccRecipients = $mail->cc();
 
 // Get the "BCC" field recipients
-$bccRecipients = $mailParser->bcc();
+$bccRecipients = $mail->bcc();
 ```
 
 ### Example: Retrieving Attachments
 
 ```php
 // Get all attachments in the email
-$attachments = $mailParser->attachments();
+$attachments = $mail->attachments();
 
 // Loop through attachments and get information about each
 foreach ($attachments as $attachment) {
