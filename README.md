@@ -117,11 +117,7 @@ $mail->html();
 Get all attachments as an array, with each item containing `name`, `mime`, and `content`.
 
 ```php
-// Get all attachments in the email
-$attachments = $mail->attachments();
-
-// Loop through attachments and get information about each
-foreach ($attachments as $attachment) {
+$mail->attachments()->each(function ($file) {
     echo 'Filename: ' . $attachment['name'] . PHP_EOL;
     echo 'MIME Type: ' . $attachment['mime'] . PHP_EOL;
     echo 'Content: ' . $attachment['content'] . PHP_EOL;
