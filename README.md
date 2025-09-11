@@ -118,8 +118,8 @@ Get all attachments as an array, with each item containing `name`, `mime`, and `
 
 ```php
 $mail->attachments()->each(function ($file) {
-    echo 'Filename: ' . $file['name'] . PHP_EOL;
+    echo 'Filename:  ' . $file['name'] . PHP_EOL;
     echo 'MIME Type: ' . $file['mime'] . PHP_EOL;
-    echo 'Content: ' . $file['content'] . PHP_EOL;
+    echo 'Content:   ' . $file['content'] . PHP_EOL;
 }
 ```
