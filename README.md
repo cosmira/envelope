@@ -87,7 +87,7 @@ $mail->subject();
 
 ### `date()`
 
-Get the date the email was sent as a `DateTimeImmutable` object.
+Get the date the email was sent as a `DateTime` object.
 
 ```php
 $mail->date()->format('Y-m-d H:i:s');
