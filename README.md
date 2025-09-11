@@ -18,7 +18,7 @@ composer require cosmira/envelope
 
 ## Usage
 
-To use the `Envelope` class, instantiate it with raw email content. Then, use the various methods to access parts of the email such as the sender, recipients, subject, and more.
+To use the `Envelope` class, instantiate it with raw email content.
 
 ```php
 use Cosmira\Envelope\Envelope;
@@ -27,55 +27,95 @@ $content = file_get_contents('path_to_email_file.eml');
 
 // Parse the email content
 $mail = Envelope::fromString($content);
-
-// Retrieve the sender's email address
-$from = $mail->from();
-
-// Retrieve the recipient(s) in the "To" field
-$to = $mail->to();
-
-// Retrieve the email subject
-$subject = $mail->subject();
-
-// Retrieve the plain text content
-$text = $mail->text();
-
-// Retrieve the HTML content
-$html = $mail->html();
-
-// Retrieve the attachments
-$attachments = $mail->attachments();
 ```
 
-### Available Methods
+## API Reference
 
-Here are the methods you can use with the `Envelope` class:
+### `from()`
 
-- `from()` – Get the sender's email address.
-- `fromName()` – Get the sender's name.
-- `to()` – Get the "To" recipients, as an array of email => name pairs.
-- `cc()` – Get the "CC" recipients, as an array of email => name pairs.
-- `bcc()` – Get the "BCC" recipients, as an array of email => name pairs.
-- `subject()` – Get the subject of the email.
-- `date()` – Get the date the email was sent as a `DateTimeImmutable` object.
-- `text()` – Get the plain text content of the email.
-- `html()` – Get the HTML content of the email.
-- `attachments()` – Get a collection of attachments with filenames, MIME types, and content.
-
-### Example: Retrieving All Recipients
+Get the sender’s email address.
 
 ```php
-// Get the "To" field recipients
-$toRecipients = $mail->to();
-
-// Get the "CC" field recipients
-$ccRecipients = $mail->cc();
-
-// Get the "BCC" field recipients
-$bccRecipients = $mail->bcc();
+$mail->from();
+// "john@example.com"
 ```
 
-### Example: Retrieving Attachments
+
+### `fromName()`
+
+Get the sender’s display name.
+
+```php
+$mail->fromName();
+// "John Doe"
+```
+
+### `to()`
+
+Get the primary recipients as an array of `email => name` pairs.
+
+```php
+$mail->to();
+// ['jane@example.com' => 'Jane Doe']
+```
+
+### `cc()`
+
+Get the CC recipients as an array of `email => name` pairs.
+
+```php
+$mail->cc();
+// ['assistant@example.com' => 'Team Assistant']
+```
+
+### `bcc()`
+
+Get the BCC recipients as an array of `email => name` pairs.
+
+```php
+$mail->bcc();
+// ['hidden@example.com' => 'Confidential']
+```
+
+### `subject()`
+
+Get the subject line of the email.
+
+```php
+$mail->subject();
+// "Project Kickoff Meeting"
+```
+
+### `date()`
+
+Get the date the email was sent as a `DateTimeImmutable` object.
+
+```php
+$mail->date()->format('Y-m-d H:i:s');
+// "2025-09-11 10:32:00"
+```
+
+### `text()`
+
+Get the plain text content of the email.
+
+```php
+$mail->text();
+// "Hello team, the meeting is scheduled for tomorrow..."
+```
+
+### `html()`
+
+Get the HTML content of the email.
+
+```php
+$mail->html();
+// "<p>Hello team,<br>The meeting is scheduled for tomorrow...</p>"
+```
+
+### `attachments()`
+
+Get all attachments as an array, with each item containing `name`, `mime`, and `content`.
 
 ```php
 // Get all attachments in the email
