@@ -18,8 +18,6 @@ composer require cosmira/envelope
 
 ## Usage
 
-### Basic Usage
-
 To use the `Envelope` class, instantiate it with raw email content. Then, use the various methods to access parts of the email such as the sender, recipients, subject, and more.
 
 ```php
