@@ -55,7 +55,7 @@ Get the primary recipients as an array of `email => name` pairs.
 
 ```php
 $mail->to();
-// ['jane@example.com' => 'Jane Doe']
+// Collection: ['jane@example.com' => 'Jane Doe']
 ```
 
 ### `cc()`
@@ -64,7 +64,7 @@ Get the CC recipients as an array of `email => name` pairs.
 
 ```php
 $mail->cc();
-// ['assistant@example.com' => 'Team Assistant']
+// Collection: ['assistant@example.com' => 'Team Assistant']
 ```
 
 ### `bcc()`
@@ -73,7 +73,7 @@ Get the BCC recipients as an array of `email => name` pairs.
 
 ```php
 $mail->bcc();
-// ['hidden@example.com' => 'Confidential']
+// Collection: ['hidden@example.com' => 'Confidential']
 ```
 
 ### `subject()`
