@@ -25,8 +25,7 @@ use Cosmira\Envelope\Envelope;
 
 $content = file_get_contents('path_to_email_file.eml');
 
-// Parse the email content
-$mail = Envelope::fromString($content);
+$mail = new Envelope($content);
 ```
 
 ## API Reference
